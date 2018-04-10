@@ -59,17 +59,6 @@ int main(){
   printf("===== DLP Controller =====\n");
   printf("Internal Test Patterns demonstration\n");
 
-  /* --------------------------> Open the I2C bus <-------------------------- */
-  // Access an I2C bus from a C program
-  snprintf(filename, 13, "/dev/i2c-%d", adapter_n);
-
-  // Open the bus
-  if ((file = open(filename, O_RDWR)) < 0) {
-    /* ERROR HANDLING: you can check errno to see what went wrong */
-    perror("Failed to open the I2C bus.");
-    exit(1);
-  }
-
   /* ----------------------> Initiating communication <---------------------- */
   // Specify device address to communicate
   uint8_t addr = 0x1B;  // DLPC2607 I2C address

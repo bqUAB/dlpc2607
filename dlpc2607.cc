@@ -26,18 +26,18 @@ uint8_t Dlpc2607::SoftRst() {
 }
 
 uint Dlpc2607::RgbLedDrvEn(bool red, bool green, bool blue) {
-  uint8_t rgb = 0;
-  if (red) {
-    rgb |= 1;
-  }
-  if (green) {
-    rgb |= 1 << 1;
-  }
-  if (blue) {
-    rgb |= 1 << 2;
+  uint8_t value = 0;
+  bool rgb[3] = {red, green, blue};
+
+  for (int i = 0; i < 3; x++) {
+    if (rgb[i]) {
+      value |= 1 << i;
+    } else {
+      value |= 0 << i;
+    }
   }
 
-  ptr_i2c->WriteToMem(kDlpc2607Addr, kRgbLedDrvEn, rgb);
+  ptr_i2c->WriteToMem(kDlpc2607Addr, kRgbLedDrvEn, value);
 }
 
 // API for register access, defined in main.c

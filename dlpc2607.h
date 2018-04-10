@@ -57,8 +57,8 @@ class Dlpc2607 {
       kQvgaL = 1,
       kQwvgaP = 2,
       kQwvgaL = 3,
-      k23VgaP = 4,  // 2:3
-      k32VgaL = 5,  // 3:2
+      kVgaP23 = 4,  // 2:3
+      kVgaL32 = 5,  // 3:2
       kVgaP = 6,
       kVgaL = 7,
       kWvga720P = 8,
