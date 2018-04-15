@@ -13,7 +13,7 @@
 TARGET  = dlpc2607-demo
 
 # Here we add all *.cc files that we want to compile
-CPPSRCS = main.cc dlpc2607.cc
+CPPSRCS = main.cc i2c.cc dlpc2607.cc
 
 # Here we add the paths to all include directories
 INCS    = ../include
@@ -22,9 +22,9 @@ INCS    = ../include
 LIBS    = -lm
 
 # Parameters for SCP upload. Set up SSH keys to bypass password prompt
-SCP_TARGET_IP   = 192.168.0.100
-SCP_USER        = root
-SCP_TARGET_PATH = /home/root/bin
+SCP_TARGET_IP   = 192.168.1.50
+SCP_USER        = pi
+SCP_TARGET_PATH = /home/pi/bin
 SCP             = scp
 SCP_FLAGS       =
 

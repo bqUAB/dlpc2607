@@ -1,18 +1,18 @@
-/*
-Header file for the DLPC2607 coupled with a DLP2000.
-Basic functionality
-*/
-
-#include <stdio.h>
-#include <stdint.h>   // Needed for unit uint8_t data type
-#include <stdbool.h>  // Needed for bool function
-#include <time.h>     // Needed for timespec
-#include "i2c.h"
+// Header file for the DLPC2607 coupled with a DLP2000 found on the DLP
+// LightCrafter Display 2000 EVM.
+// Basic functionality
 
 #ifndef DLPC2607_H_
 #define DLPC2607_H_
 
-const uint8_t kDlpc2607Addr = 0x36;
+#include <stdio.h>
+#include <stdint.h>   // Needed for unit uint8_t data type
+#include <stdbool.h>
+#include <time.h>     // Needed for timespec
+#include "i2c.h"
+
+
+const uint16_t kDlpc2607Addr = 0x1B;
                                  // Reset value
 const uint8_t kInSrcSel = 0x0B;  // 0x02  Splash
 const uint8_t kInResSel = 0x0C;  // 0x01  QVGA landscape
@@ -74,7 +74,7 @@ class Dlpc2607 {
       kWvga854P = 18,
       kWvga854L = 19,
       kWvga864P = 20,
-      kWvga864L = 21
+      kWvga864L = 21,
       // 22 is reserved
       kNtsc = 23,  // landscape
       // 24 is reserved
@@ -86,14 +86,17 @@ class Dlpc2607 {
     };
 
     // Set initial input paramaters
+    uint8_t in_src[4] = {0, 0, 0, kIntTestPattern};
+    uint8_t px_data_fmt[4] = {0, 0, 0, kRgb888Bus24};
+    uint8_t in_res[4] = {0, 0, 0, kNhdL};
 
   public:
-    uint8_t DmdPark(bool park);
-    uint8_t SoftRst();
-    uint8_t RgbLedDrvEn(bool red, bool green, bool blue);
-}
+    Dlpc2607(I2cBus* i2c_n);
 
-// Functions
-bool DLPC2607_Init(int file);
+    bool DmdPark(bool park);
+    bool SoftRst();
+    bool RgbLedDrvEn(bool red, bool green, bool blue);
+    bool Init();
+};  // Class Dlpc2607
 
-#endif  /*DLPC2607_H_*/
+#endif  // DLPC2607_H_
