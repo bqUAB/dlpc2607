@@ -1,13 +1,13 @@
 // ***************************************************************************
-// Linux ARM configuration of DLPC2607 through I2C communication
+// Linux ARM demo configuration of DLPC2607 through I2C communication
 // by Byron Quezada
 //
-// Configuration of the DLPC2607 to display the different Internal Test
+// Demo configuration of the DLPC2607 to display the different Internal Test
 // Patterns. This program stablishes the minimum configuration requirements to
 // project a determined image using the DLP2000 LightCrafter EVM. The program
 // implements I2C communication, and it shows how to write to the DLPC2607
 // registers by accessing them through the built-in I2C kernel driver in
-// Debian. The I2C adapter is selected from userspace through
+// Linux. The I2C adapter is selected from userspace through
 // the /dev interface. The i2c-dev module is needed but it's loaded by
 // default.
 //

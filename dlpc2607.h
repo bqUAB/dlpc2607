@@ -1,6 +1,13 @@
-// Header file for the DLPC2607 coupled with a DLP2000 found on the DLP
-// LightCrafter Display 2000 EVM.
+// ***************************************************************************
+// Header file for the DLPC2607 class
+// by Byron Quezada
+// 
+// This class was implemented for a DLPC2607 coupled with a DLP2000 found on
+// the DLP LightCrafter Display 2000 EVM.
 // Basic functionality
+//
+// Created on 10 April 2018
+// ***************************************************************************
 
 #ifndef DLPC2607_H_
 #define DLPC2607_H_

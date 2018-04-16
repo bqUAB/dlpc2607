@@ -22,7 +22,7 @@ INCS    = ../include
 LIBS    = -lm
 
 # Parameters for SCP upload. Set up SSH keys to bypass password prompt
-SCP_TARGET_IP   = 192.168.1.50
+SCP_TARGET_IP   = 192.168.0.12
 SCP_USER        = pi
 SCP_TARGET_PATH = /home/pi/bin
 SCP             = scp
