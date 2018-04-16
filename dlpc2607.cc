@@ -21,8 +21,9 @@ bool Dlpc2607::SoftRst() {
   // (I2C: 0x2D) command be applied first, followed by a 500-μs wait interval
   // before issuing the reset.
   bool success = 0;
+  uint8_t value[4] = {0, 0, 0, true};
 
-  success = ptr_i2c->WriteToMem(kDlpc2607Addr, kDmdParkCtrl, 0x01);
+  success = ptr_i2c->WriteToMemFrom(kDlpc2607Addr, kSoftRst, 4, value);
 
   return success;
 }
