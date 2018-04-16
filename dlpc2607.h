@@ -90,12 +90,14 @@ class Dlpc2607 {
 
     // Set initial input paramaters
     uint8_t in_src = kIntTestPattern;
-    uint8_t px_data_fmt[4] = {0, 0, 0, kRgb888Bus24};
-    uint8_t in_res[4] = {0, 0, 0, kNhdL};
+    uint8_t in_res = kNhdL;
+    uint8_t px_data_fmt = kRgb888Bus24;
 
     bool DmdPark(bool park);
     bool SoftRst();
-    bool InSrcSel(uint8_t selection);
+    bool InSrcSel(uint8_t source);
+    bool InResSel(uint8_t resolution);
+    bool PxDataFmtSel(uint8_t format);
     bool RgbLedDrvEn(bool red, bool green, bool blue);
     bool Init();
 };  // Class Dlpc2607

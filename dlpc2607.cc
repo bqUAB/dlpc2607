@@ -28,12 +28,32 @@ bool Dlpc2607::SoftRst() {
   return success;
 }
 
-bool Dlpc2607::InSrcSel(uint8_t selection) {
+bool Dlpc2607::InSrcSel(uint8_t source) {
   // Input Source Selection
   bool success = 0;
-  uint8_t value[4] = {0, 0, 0, selection};
+  uint8_t value[4] = {0, 0, 0, source};
 
   success = ptr_i2c->WriteToMemFrom(kDlpc2607Addr, kInSrcSel, 4, value);
+
+  return success;
+}
+
+bool Dlpc2607::InResSel(uint8_t resolution) {
+  // Input Resolution Select
+  bool success = 0;
+  uint8_t value[4] = {0, 0, 0, resolution};
+
+  success = ptr_i2c->WriteToMemFrom(kDlpc2607Addr, kInResSel, 4, value);
+
+  return success;
+}
+
+bool Dlpc2607::PxDataFmtSel(uint8_t format) {
+  // Pixel Data Format Select
+  bool success = 0;
+  uint8_t value[4] = {0, 0, 0, format};
+
+  success = ptr_i2c->WriteToMemFrom(kDlpc2607Addr, kPxDataFmtSel, 4, value);
 
   return success;
 }
@@ -81,9 +101,14 @@ bool Dlpc2607::Init() {
     success = InSrcSel(in_src);
   }
 
-  // Input resolution selection
+  // Input resolution select
   if (success) {
-    success = ptr_i2c->WriteToMemFrom(kDlpc2607Addr, kInResSel, 4, in_res);
+    success = InResSel(in_res);
+  }
+
+  // Pixel data format select
+  if (success) {
+    success = PxDataFmtSel(px_data_fmt);
   }
 
   // RGB LED driver enables
