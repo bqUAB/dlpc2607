@@ -35,9 +35,9 @@ bool Dlpc2607::RgbLedDrvEn(bool red, bool green, bool blue) {
 
   for (int i = 0; i < 3; i++) {
     if (rgb[i]) {
-      value[0] |= 1 << i;
+      value[3] |= 1 << i;
     } else {
-      value[0] |= 0 << i;
+      value[3] |= 0 << i;
     }
   }
 
