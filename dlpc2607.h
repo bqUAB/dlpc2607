@@ -85,16 +85,17 @@ class Dlpc2607 {
       kNhdLVga = 29
     };
 
-    // Set initial input paramaters
-    uint8_t in_src[4] = {0, 0, 0, kIntTestPattern};
-    uint8_t px_data_fmt[4] = {0, 0, 0, kRgb888Bus24};
-    uint8_t in_res[4] = {0, 0, 0, kNhdL};
-
   public:
     Dlpc2607(I2cBus* i2c_n);
 
+    // Set initial input paramaters
+    uint8_t in_src = kIntTestPattern;
+    uint8_t px_data_fmt[4] = {0, 0, 0, kRgb888Bus24};
+    uint8_t in_res[4] = {0, 0, 0, kNhdL};
+
     bool DmdPark(bool park);
     bool SoftRst();
+    bool InSrcSel(uint8_t selection);
     bool RgbLedDrvEn(bool red, bool green, bool blue);
     bool Init();
 };  // Class Dlpc2607

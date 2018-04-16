@@ -28,6 +28,16 @@ bool Dlpc2607::SoftRst() {
   return success;
 }
 
+bool Dlpc2607::InSrcSel(uint8_t selection) {
+  // Input Source Selection
+  bool success = 0;
+  uint8_t value[4] = {0, 0, 0, selection};
+
+  success = ptr_i2c->WriteToMemFrom(kDlpc2607Addr, kInSrcSel, 4, value);
+
+  return success;
+}
+
 bool Dlpc2607::RgbLedDrvEn(bool red, bool green, bool blue) {
   uint8_t value[4] = {0};
   bool rgb[3] = {red, green, blue};
@@ -68,7 +78,7 @@ bool Dlpc2607::Init() {
 
   // Input source selection
   if (success) {
-    success = ptr_i2c->WriteToMemFrom(kDlpc2607Addr, kInSrcSel, 4, in_src);
+    success = InSrcSel(in_src);
   }
 
   // Input resolution selection
