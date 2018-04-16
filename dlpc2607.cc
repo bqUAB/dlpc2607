@@ -112,9 +112,9 @@ bool Dlpc2607::Init() {
   }
 
   // RGB LED driver enables
-  // if (success) {
-  //   success = RgbLedDrvEn(true, true, true);
-  // }
+  if (success) {
+    success = RgbLedDrvEn(true, true, true);
+  }
 
   return success;
 }
